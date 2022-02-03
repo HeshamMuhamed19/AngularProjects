@@ -1,0 +1,36 @@
+<header class="text-center bg-dark w-50 mx-auto text-white p-2">
+  <h1>Angular Todo App</h1>
+</header>
+
+
+<div class="my-3 container w-50">
+  <label for="newTodo"></label>
+  <input type="text" #newTodo
+         id="newTodo" class="form-control"/>
+  <button (click)="add(newTodo.value);newTodo.value='';"
+          class="btn btn-outline-primary my-2">add Todo</button>
+</div>
+
+<div class="show-todo text-center container w-50">
+  <table class="table">
+    <tr class="p-3">
+      <td>Id</td>
+      <td> Todo </td>
+      <td> Completed</td>
+      <td> Actions </td>
+    </tr>
+    <tr *ngFor="let todo of todos" style="height: 80px; width: 80px">
+      <td>{{todo.id}}</td>
+      <td >{{todo.label}}</td>
+      <td [ngClass]="todo.done ? 'text-success fs-5' : 'text-warning'">{{todo.done}}</td>
+      <td>
+        <button class="btn btn-outline-danger btn-sm
+          text-dark mx-2" (click)="delete(todo)">Delete</button>
+        <button (click)="toggle(todo)" class="btn btn-sm
+            btn-outline-warning">Completed</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
